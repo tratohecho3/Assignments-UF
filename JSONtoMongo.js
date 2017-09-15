@@ -41,8 +41,8 @@ for (var i=0; i< json.entries.length; i++ ){
     });
   }
   newUser.save(function(err) {
-    console.log("je");
     if (err) throw err;
+    console.log('Ready')
   });
   
 

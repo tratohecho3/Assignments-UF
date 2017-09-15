@@ -28,7 +28,6 @@ listingSchema.pre('save', function(next) {
 	}
 
 	next();
-	console.log(next());
 
 });
 
@@ -37,3 +36,4 @@ var Listing = mongoose.model('Listing', listingSchema);
 
 /* Export the model to make it avaiable to other parts of your Node application */
 module.exports = Listing;
+module.exports.schema = listingSchema;

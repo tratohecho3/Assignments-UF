@@ -1,12 +1,35 @@
 /* Fill out these functions using Mongoose queries*/
+var schema_Module = require('./ListingSchema.js');
+var mongoose = require('mongoose');
 
+var Listing = require('./ListingSchema.js');
+var config = require('./config');
+mongoose.Promise = global.Promise;
+mongoose.connect(config.db.uri,{ useMongoClient: true });
 var findLibraryWest = function() {
-  /* 
-    Find the document that contains data corresponding to Library West,
-    then log it to the console. 
-   */
+  var query = Listing.findOne({'name': 'Library West'});
+
+  query.select('name code');
+  query.exec(function(err,thing) {
+    
+    if (err) return handleError(err);
+    console.log(thing.name, thing.code);
+  })
+  
 };
+  
+
+
+
 var removeCable = function() {
+  var query = Listing.findOne({'code': 'CABL'});
+
+  query.select('name code');
+  query.exec(function(err,thing) {
+    
+    if (err) return handleError(err);
+    console.log(thing.name, thing.code);
+  })
   /*
     Find the document with the code 'CABL'. This cooresponds with courses that can only be viewed 
     on cable TV. Since we live in the 21st century and most courses are now web based, go ahead
